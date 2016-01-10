@@ -4,12 +4,19 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.Toast;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 /**
  * Created by epson on 2016/1/8.
@@ -18,6 +25,7 @@ public class simpletxt extends AppCompatActivity {
 
     Button btnSave,btnCancel;
     EditText txt1;
+    String filename;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,14 +39,14 @@ public class simpletxt extends AppCompatActivity {
             public void onClick(View v) {
                 new AlertDialog.Builder(simpletxt.this)
                         .setTitle("確認視窗")
-                        .setMessage("是否存檔?")
-                        .setNeutralButton("取消", new DialogInterface.OnClickListener() {
+                        .setMessage("尚未存檔，確定要離開?")
+                        .setPositiveButton("否，繼續編輯", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.cancel();
                             }
                         })
-                        .setPositiveButton("否", new DialogInterface.OnClickListener() {
+                        .setNegativeButton("是，資料將不會存入", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 Intent data = new Intent();
@@ -47,15 +55,51 @@ public class simpletxt extends AppCompatActivity {
                                 simpletxt.this.finish();
                             }
                         })
-                        .setNegativeButton("是", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-
-                            }
-                        })
                         .show();
 
 
+            }
+        });
+
+        btnSave.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final EditText input = new EditText(simpletxt.this);
+                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.MATCH_PARENT);
+                input.setLayoutParams(lp);
+                new AlertDialog.Builder(simpletxt.this)
+                        .setTitle("儲存檔案")
+                        .setMessage("輸入檔名")
+                        .setView(input)
+                        .setPositiveButton("存檔", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                filename = input.getText().toString();
+                                try {
+                                    File mSDFile = null;
+                                    mSDFile = Environment.getExternalStorageDirectory();
+                                    File mFile = new File(mSDFile.getParent() + "/" + mSDFile.getName() + "/save_txt");
+                                    if(!mFile.exists()) {
+                                        mFile.mkdirs();
+                                    }
+                                    FileWriter mFileWriter = new FileWriter( mSDFile.getParent() + "/" + mSDFile.getName() + "/save_txt/" + filename + ".txt" );
+                                    mFileWriter.write(txt1.getText().toString());
+                                    mFileWriter.close();
+                                    Toast.makeText(simpletxt.this, "已儲存檔案", Toast.LENGTH_SHORT).show();
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+
+                            }
+                        })
+                        .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        }).show();
             }
         });
     }
