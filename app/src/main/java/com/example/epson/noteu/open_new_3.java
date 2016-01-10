@@ -7,27 +7,28 @@ import android.view.View;
 import android.widget.Button;
 
 /**
- * Created by epson on 2016/1/9.
+ * Created by epson on 2016/1/10.
  */
-public class open_new extends AppCompatActivity {
+public class open_new_3 extends AppCompatActivity {
 
-    Button btnNew,btnOld;
+    Button btnNew_3, btnOld_3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.opennew);
-        btnNew = (Button)findViewById(R.id.btnNew);
-        btnOld = (Button)findViewById(R.id.btnOld);
+        setContentView(R.layout.opennew2);
+        btnNew_3 = (Button) findViewById(R.id.btnNew_3);
+        btnOld_3 = (Button) findViewById(R.id.btnOld_3);
 
-        btnNew.setOnClickListener(new Button.OnClickListener() {
+        btnNew_3.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent data = new Intent();
-                data.setClass(open_new.this,simpletxt.class);
+                data.setClass(open_new_3.this, picandtext.class);
                 startActivity(data);
-                open_new.this.finish();
+                open_new_3.this.finish();
             }
         });//開新檔案
+
     }
 }

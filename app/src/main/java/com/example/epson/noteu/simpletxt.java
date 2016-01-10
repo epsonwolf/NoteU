@@ -50,7 +50,7 @@ public class simpletxt extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 Intent data = new Intent();
-                                data.setClass(simpletxt.this, open_new.class);
+                                data.setClass(simpletxt.this, MainActivity.class);
                                 startActivity(data);
                                 simpletxt.this.finish();
                             }

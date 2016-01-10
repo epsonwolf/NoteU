@@ -3,22 +3,20 @@ package com.example.epson.noteu;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
-    Button btnNew,btnOld;
+    Button btnTXT,btnWord,btnPW;
 
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        btnNew = (Button)findViewById(R.id.btnNew);
-        btnOld = (Button)findViewById(R.id.btnOld);
+        btnTXT = (Button)findViewById(R.id.btnTXT);
+        btnPW = (Button)findViewById(R.id.btnPW);
+        btnWord = (Button)findViewById(R.id.btnWord);
 
-        btnNew.setOnClickListener(new Button.OnClickListener() {
+        btnTXT.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent data = new Intent();
@@ -26,28 +24,29 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(data);
                 MainActivity.this.finish();
             }
-        });//開新檔案
+        });//進入純文字介面
+
+        btnWord.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent data1 = new Intent();
+                data1.setClass(MainActivity.this,open_new_2.class);
+                startActivity(data1);
+                MainActivity.this.finish();
+            }
+        });
+
+        btnPW.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent data2 = new Intent();
+                data2.setClass(MainActivity.this,picandtext.class);
+                startActivity(data2);
+                MainActivity.this.finish();
+            }
+        });
+
+
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }

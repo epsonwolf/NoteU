@@ -11,17 +11,17 @@
         android:layout_width="100dp"
         android:layout_height="80dp"
         android:text="開新檔案"
-        android:id="@+id/btnNew"
+        android:id="@+id/btnNew_2"
         android:layout_marginBottom="41dp"
-        android:layout_above="@+id/btnOld"
-        android:layout_alignLeft="@+id/btnOld"
-        android:layout_alignStart="@+id/btnOld" />
+        android:layout_above="@+id/btnOld_2"
+        android:layout_alignLeft="@+id/btnOld_2"
+        android:layout_alignStart="@+id/btnOld_2" />
 
     <Button
         android:layout_width="100dp"
         android:layout_height="80dp"
         android:text="讀取舊檔"
-        android:id="@+id/btnOld"
+        android:id="@+id/btnOld_2"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="170dp" />

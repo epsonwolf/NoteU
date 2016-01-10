@@ -1,6 +1,7 @@
 package com.example.epson.noteu;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -13,6 +14,7 @@ import android.widget.EditText;
 public class picandtext extends AppCompatActivity {
 
     EditText edtMix;
+    Bitmap bitmap;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,4 +52,8 @@ public class picandtext extends AppCompatActivity {
         intent.setType("image/*");
         startActivityForResult(intent, 0);
     }
+
+
+
+
 }
