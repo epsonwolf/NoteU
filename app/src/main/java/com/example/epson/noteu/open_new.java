@@ -42,12 +42,22 @@ public class open_new extends AppCompatActivity {
             }
         });
 
-        btnback.setOnClickListener(new Button.OnClickListener() {
+        btnPW.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent data2 = new Intent();
-                data2.setClass(open_new.this,MainActivity.class);
+                data2.setClass(open_new.this,picandtext.class);
                 startActivity(data2);
+                open_new.this.finish();
+            }
+        });
+
+        btnback.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent data3 = new Intent();
+                data3.setClass(open_new.this,MainActivity.class);
+                startActivity(data3);
                 open_new.this.finish();
             }
         });
