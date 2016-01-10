@@ -80,11 +80,11 @@ public class simpletxt extends AppCompatActivity {
                                 try {
                                     File mSDFile = null;
                                     mSDFile = Environment.getExternalStorageDirectory();
-                                    File mFile = new File(mSDFile.getParent() + "/" + mSDFile.getName() + "/save_txt");
+                                    File mFile = new File(mSDFile.getParent() + "/" + mSDFile.getName() + "/NoteU_txt");
                                     if(!mFile.exists()) {
                                         mFile.mkdirs();
                                     }
-                                    FileWriter mFileWriter = new FileWriter( mSDFile.getParent() + "/" + mSDFile.getName() + "/save_txt/" + filename + ".txt" );
+                                    FileWriter mFileWriter = new FileWriter( mSDFile.getParent() + "/" + mSDFile.getName() + "/NoteU_txt/" + filename + ".txt" );
                                     mFileWriter.write(txt1.getText().toString());
                                     mFileWriter.close();
                                     Toast.makeText(simpletxt.this, "已儲存檔案", Toast.LENGTH_SHORT).show();
