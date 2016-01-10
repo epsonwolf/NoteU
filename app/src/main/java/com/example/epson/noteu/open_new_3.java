@@ -16,7 +16,7 @@ public class open_new_3 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.opennew2);
+        setContentView(R.layout.opennew3);
         btnNew_3 = (Button) findViewById(R.id.btnNew_3);
         btnOld_3 = (Button) findViewById(R.id.btnOld_3);
 

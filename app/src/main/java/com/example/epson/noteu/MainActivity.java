@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent data2 = new Intent();
-                data2.setClass(MainActivity.this,picandtext.class);
+                data2.setClass(MainActivity.this,open_new_3.class);
                 startActivity(data2);
                 MainActivity.this.finish();
             }
