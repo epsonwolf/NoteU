@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="字型大小:"
+            android:id="@+id/textView" />
+
+        <Spinner
+            android:layout_width="107dp"
+            android:layout_height="40dp"
+            android:id="@+id/spnsize"
+            android:spinnerMode="dropdown" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="字型顏色:"
+            android:id="@+id/textView2" />
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:id="@+id/spncolor"
+            android:spinnerMode="dropdown"/>
+
+    </LinearLayout>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edtWord"
+        android:layout_weight="0.80"
+        android:elegantTextHeight="false"
+        android:gravity="top" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="存檔"
+            android:id="@+id/button"
+            android:layout_alignTop="@+id/button2"
+            android:layout_toLeftOf="@+id/button2"
+            android:layout_toStartOf="@+id/button2"
+            android:layout_marginLeft="90dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="返回"
+            android:id="@+id/button2"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+    </LinearLayout>
+
+</LinearLayout>
