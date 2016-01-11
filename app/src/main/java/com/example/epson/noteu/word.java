@@ -147,10 +147,14 @@ public class word extends AppCompatActivity {
                                     if(!mFile.exists()) {
                                         mFile.mkdirs();
                                     }
-                                    FileWriter mFileWriter = new FileWriter( mSDFile.getParent() + "/" + mSDFile.getName() + "/NoteU_txt/" + filename + ".txt" );
+                                    FileWriter mFileWriter = new FileWriter( mSDFile.getParent() + "/" + mSDFile.getName() + "/NoteU_word/" + filename + ".doc" );
                                     mFileWriter.write(edtWord.getText().toString());
                                     mFileWriter.close();
                                     Toast.makeText(word.this, "已儲存檔案", Toast.LENGTH_SHORT).show();
+                                    Intent data = new Intent();
+                                    data.setClass(word.this, MainActivity.class);
+                                    startActivity(data);
+                                    word.this.finish();
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                 }
