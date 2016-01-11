@@ -142,8 +142,8 @@ public class simpletxt extends AppCompatActivity {
                     String line ="";
                     while((line = br.readLine()) != null) {
                         cont.add(line);
-
                     }
+                    txt1.setText((CharSequence) cont);
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 } catch (FileNotFoundException e) {
