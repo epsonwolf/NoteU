@@ -6,9 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-import java.io.BufferedInputStream;
-import java.io.FileInputStream;
-
 /**
  * Created by epson on 2016/1/9.
  */
@@ -36,8 +33,10 @@ public class open_new extends AppCompatActivity {
         btnOld.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FileInputStream fileIn = null;
-                BufferedInputStream bufFileIn = null;
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                intent.addCategory(Intent.CATEGORY_OPENABLE);
+                intent.setType("*/*");
+                startActivityForResult(intent, 0);
             }
         });
     }

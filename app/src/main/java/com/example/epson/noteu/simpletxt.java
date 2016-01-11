@@ -88,6 +88,10 @@ public class simpletxt extends AppCompatActivity {
                                     mFileWriter.write(txt1.getText().toString());
                                     mFileWriter.close();
                                     Toast.makeText(simpletxt.this, "已儲存檔案", Toast.LENGTH_SHORT).show();
+                                    Intent data = new Intent();
+                                    data.setClass(simpletxt.this, MainActivity.class);
+                                    startActivity(data);
+                                    simpletxt.this.finish();
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                 }
