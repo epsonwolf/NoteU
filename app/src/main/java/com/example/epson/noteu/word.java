@@ -5,13 +5,20 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.Toast;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 /**
  * Created by epson on 2016/1/9.
@@ -23,6 +30,7 @@ public class word extends AppCompatActivity {
     String[] textColor = {"黑色","藍色","綠色","紅色","黃色","淡藍色"};
     Spinner spnsize,spncolor;
     Button btnSave_word,btnBack_word;
+    String filename;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.word);
@@ -113,6 +121,48 @@ public class word extends AppCompatActivity {
                             }
                         })
                         .show();
+            }
+        });
+
+        btnSave_word.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final EditText input = new EditText(word.this);
+                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.MATCH_PARENT);
+                input.setLayoutParams(lp);
+                new AlertDialog.Builder(word.this)
+                        .setTitle("儲存檔案")
+                        .setMessage("輸入檔名")
+                        .setView(input)
+                        .setPositiveButton("存檔", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                filename = input.getText().toString();
+                                try {
+                                    File mSDFile = null;
+                                    mSDFile = Environment.getExternalStorageDirectory();
+                                    File mFile = new File(mSDFile.getParent() + "/" + mSDFile.getName() + "/NoteU_word");
+                                    if(!mFile.exists()) {
+                                        mFile.mkdirs();
+                                    }
+                                    FileWriter mFileWriter = new FileWriter( mSDFile.getParent() + "/" + mSDFile.getName() + "/NoteU_txt/" + filename + ".txt" );
+                                    mFileWriter.write(edtWord.getText().toString());
+                                    mFileWriter.close();
+                                    Toast.makeText(word.this, "已儲存檔案", Toast.LENGTH_SHORT).show();
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+
+                            }
+                        })
+                        .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        }).show();
             }
         });
 

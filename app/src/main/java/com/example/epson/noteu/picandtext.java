@@ -49,11 +49,17 @@ public class picandtext extends AppCompatActivity {
     public void getImage() {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.addCategory(Intent.CATEGORY_OPENABLE);
-        intent.setType("image/*");
+        intent.setType("*image/*");
         startActivityForResult(intent, 0);
     }
 
-
-
-
+    /*@Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == RESULT_OK && requestCode == 0) {
+            ContentResolver resolver = getContentResolver();
+            // 获得图片的uri
+            Uri originalUri = data.getData();
+            bitmap = null;
+        }
+    }*/
 }
