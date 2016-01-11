@@ -1,9 +1,14 @@
 package com.example.epson.noteu;
 
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.SpannableString;
+import android.text.style.ImageSpan;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
@@ -49,17 +54,20 @@ public class picandtext extends AppCompatActivity {
     public void getImage() {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.addCategory(Intent.CATEGORY_OPENABLE);
-        intent.setType("*image/*");
+        intent.setType("*/*");
         startActivityForResult(intent, 0);
     }
 
-    /*@Override
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK && requestCode == 0) {
             ContentResolver resolver = getContentResolver();
-            // 获得图片的uri
             Uri originalUri = data.getData();
-            bitmap = null;
+            String temp = originalUri.toString();
+            int x = Integer.valueOf(temp);
+            Drawable pic = getResources().getDrawable(x);
+            SpannableString spnString = new SpannableString(temp);
+            ImageSpan imageSpan = new ImageSpan(picandtext.this,bitmap);
         }
-    }*/
+    }
 }

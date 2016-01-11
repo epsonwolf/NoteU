@@ -28,17 +28,18 @@ public class open_new extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.opennew);
         btnNew = (Button)findViewById(R.id.btnNew);
-        btnOld = (Button)findViewById(R.id.btnOld);
+
 
         btnNew.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent data = new Intent();
-                data.setClass(open_new.this,simpletxt.class);
+                data.setClass(open_new.this, simpletxt.class);
                 startActivity(data);
                 open_new.this.finish();
             }
         });//開新檔案
+        btnOld = (Button)findViewById(R.id.btnOld);
 
         btnOld.setOnClickListener(new Button.OnClickListener() {
             @Override

@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent data = new Intent();
-                data.setClass(MainActivity.this,open_new.class);
+                data.setClass(MainActivity.this,simpletxt.class);
                 startActivity(data);
                 MainActivity.this.finish();
             }
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent data1 = new Intent();
-                data1.setClass(MainActivity.this,open_new_2.class);
+                data1.setClass(MainActivity.this,word.class);
                 startActivity(data1);
                 MainActivity.this.finish();
             }
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent data2 = new Intent();
-                data2.setClass(MainActivity.this,open_new_3.class);
+                data2.setClass(MainActivity.this,picandtext.class);
                 startActivity(data2);
                 MainActivity.this.finish();
             }
