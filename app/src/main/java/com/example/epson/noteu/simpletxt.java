@@ -15,8 +15,9 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import java.io.File;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 
 /**
  * Created by epson on 2016/1/8.
@@ -80,13 +81,17 @@ public class simpletxt extends AppCompatActivity {
                                 try {
                                     File mSDFile = null;
                                     mSDFile = Environment.getExternalStorageDirectory();
-                                    File mFile = new File(mSDFile.getParent() + "/" + mSDFile.getName() + "/NoteU_txt");
+                                    File mFile = new File(mSDFile.getParent() + "/" + mSDFile.getName() + "/NoteU_txt/" + filename + ".txt");
                                     if(!mFile.exists()) {
                                         mFile.mkdirs();
                                     }
-                                    FileWriter mFileWriter = new FileWriter( mSDFile.getParent() + "/" + mSDFile.getName() + "/NoteU_txt/" + filename + ".txt" );
-                                    mFileWriter.write(txt1.getText().toString());
-                                    mFileWriter.close();
+                                    mFile.createNewFile();
+                                    FileOutputStream fOut = new FileOutputStream(mFile);
+                                    OutputStreamWriter myOutWriter =
+                                            new OutputStreamWriter(fOut);
+                                    myOutWriter.append(txt1.getText());
+                                    myOutWriter.close();
+                                    fOut.close();
                                     Toast.makeText(simpletxt.this, "已儲存檔案", Toast.LENGTH_SHORT).show();
                                     Intent data = new Intent();
                                     data.setClass(simpletxt.this, MainActivity.class);
